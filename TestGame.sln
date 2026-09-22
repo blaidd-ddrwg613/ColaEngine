@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGame", "TestGame\TestGame.csproj", "{A1240ED0-698E-43BE-9353-B2DABA663313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColaEngine", "ColaEngine\ColaEngine.csproj", "{01B79ADA-8C34-4EBF-A5FD-D3691B3181F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1240ED0-698E-43BE-9353-B2DABA663313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1240ED0-698E-43BE-9353-B2DABA663313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1240ED0-698E-43BE-9353-B2DABA663313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1240ED0-698E-43BE-9353-B2DABA663313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B79ADA-8C34-4EBF-A5FD-D3691B3181F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B79ADA-8C34-4EBF-A5FD-D3691B3181F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B79ADA-8C34-4EBF-A5FD-D3691B3181F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B79ADA-8C34-4EBF-A5FD-D3691B3181F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

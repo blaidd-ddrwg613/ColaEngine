@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "0GN66QKnfaM=",
+  "success": true,
+  "projectFilePath": "C:\\Code\\TestGame\\ColaEngine\\ColaEngine.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\danie\\.nuget\\packages\\raylib-cs\\8.1.0\\raylib-cs.8.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

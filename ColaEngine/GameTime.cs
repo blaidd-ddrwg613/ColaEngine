@@ -1,0 +1,21 @@
+﻿namespace ColaEngine;
+
+public class GameTime
+{
+    public float DeltaTime { get; }
+    public float TotalTime { get; }
+
+    private static float _total;
+
+    public GameTime(float dt)
+    {
+        DeltaTime = dt;
+        _total += dt;
+        TotalTime = _total;
+    }
+
+    public TimeSpan ToTimeSpan(float gameTimeInSeconds)
+    {
+        return TimeSpan.FromSeconds(gameTimeInSeconds);
+    }
+}
