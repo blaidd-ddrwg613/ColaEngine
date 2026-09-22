@@ -19,11 +19,11 @@ public class Game : GameBase
         var frameSize = 48;
         
         dinoAtlas.AddRegion("dino_walk_0", 0, 0, frameSize, frameSize);
-        dinoAtlas.AddRegion("dino_walk_1", 0, 48, frameSize, frameSize);
-        dinoAtlas.AddRegion("dino_walk_2", 0, 48 * 2, frameSize, frameSize);
-        dinoAtlas.AddRegion("dino_walk_3", 0, 48 * 3, frameSize, frameSize);
-        dinoAtlas.AddRegion("dino_walk_4", 0, 48 * 4, frameSize, frameSize);
-        dinoAtlas.AddRegion("dino_walk_5", 0, 48 * 5, frameSize, frameSize);
+        dinoAtlas.AddRegion("dino_walk_1", 48, 0, frameSize, frameSize);
+        dinoAtlas.AddRegion("dino_walk_2", 48 * 2, 0, frameSize, frameSize);
+        dinoAtlas.AddRegion("dino_walk_3", 48 * 3, 0, frameSize, frameSize);
+        dinoAtlas.AddRegion("dino_walk_4", 48 * 4, 0, frameSize, frameSize);
+        dinoAtlas.AddRegion("dino_walk_5", 48 * 5, 0, frameSize, frameSize);
         List<TextureRegion> walkFrames = dinoAtlas.ReturnRegions();
         
         Animation dinoWalkAnim = new Animation();
@@ -31,11 +31,30 @@ public class Game : GameBase
         dinoAtlas.AddAnimation("walk", dinoWalkAnim);
 
         _dino = dinoAtlas.CreateAnimatedSprite("walk");
+        _dino.CenterOrigin();
     }
 
     protected override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
+
+        if (Raylib.IsKeyDown(KeyboardKey.A))
+        {
+            _dino.FlipX = true;
+        }
+        else if (Raylib.IsKeyDown(KeyboardKey.D))
+        {
+            _dino.FlipX = false;
+        }
+        
+        if (Raylib.IsKeyDown(KeyboardKey.W))
+        {
+            _dino.FlipY = true;
+        }
+        else if (Raylib.IsKeyDown(KeyboardKey.S))
+        {
+            _dino.FlipY = false;
+        }
         
         _dino.Update(gameTime);
     }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ColaEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4935293ddf0bbf9f5daf99d8674119e2e19bb50")]
 [assembly: System.Reflection.AssemblyProductAttribute("ColaEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ColaEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

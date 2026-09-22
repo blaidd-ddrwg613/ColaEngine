@@ -7,7 +7,7 @@ public class TextureRegion
 {
     public Texture2D Texture { get; set; }
     
-    public Rectangle Source { get; }
+    public Rectangle Source { get; set; }
 
     public float Width => Source.Width;
 
@@ -22,8 +22,20 @@ public class TextureRegion
         Source = source;
     }
 
-    public void Draw(Rectangle dst, Vector2 origin, float rotation, Color tint)
+    public void Draw(Rectangle dst, Vector2 origin, float rotation, Color tint, bool flipX = false, bool flipY = false)
     {
-        Raylib.DrawTexturePro(Texture, Source, dst, origin, rotation, tint);
+        Rectangle source = Source;
+
+        if (flipX)
+        {
+            source.Width *= -1;
+        }
+
+        if (flipY)
+        {
+            source.Height *= -1;
+        }
+
+        Raylib.DrawTexturePro(Texture, source, dst, origin, rotation, tint);
     }
 }

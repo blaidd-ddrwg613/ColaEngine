@@ -66,6 +66,10 @@ public class Sprite
     /// Height is calculated by multiplying the height of the source texture region by the y-axis scale factor.
     /// </remarks>
     public float Height => Region.Height * Scale.Y;
+
+    public bool FlipX { get; set; } = false;
+
+    public bool FlipY { get; set; } = false;
     
     public Sprite() {}
 
@@ -85,6 +89,6 @@ public class Sprite
     public void Draw(Vector2 position)
     {
         var dst = new Rectangle(position.X, position.Y, Width, Height);
-        Region.Draw(dst, Origin, Rotation, Color);
+        Region.Draw(dst, Origin, Rotation, Color, FlipX, FlipY);
     }
 }
