@@ -55,6 +55,11 @@ public class TextureAtlas
         _regions.Clear();
     }
 
+    /// <summary>
+    /// Create a Sprite with the given region name.
+    /// </summary>
+    /// <param name="regionName"></param>
+    /// <returns></returns>
     public Sprite CreateSprite(string regionName)
     {
         TextureRegion region = GetRegion(regionName);
