@@ -76,6 +76,18 @@ public class TextureAtlas
     {
         _animations.Add(animationName, animation);
     }
+    
+    public Animation CreateAnimation(string[] regionNames, TimeSpan delay)
+    {
+        var frames = new List<TextureRegion>();
+
+        foreach (var regionName in regionNames)
+        {
+            frames.Add(GetRegion(regionName));
+        }
+
+        return new Animation(frames, delay);
+    }
 
     /// <summary>
     /// Gets the animation from this texture atlas with the specified name.

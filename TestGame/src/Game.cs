@@ -26,13 +26,13 @@ public class Game : GameBase
         dinoAtlas.AddRegion("dino_walk_3", 48 * 3, 0, frameSize, frameSize);
         dinoAtlas.AddRegion("dino_walk_4", 48 * 4, 0, frameSize, frameSize);
         dinoAtlas.AddRegion("dino_walk_5", 48 * 5, 0, frameSize, frameSize);
-        List<TextureRegion> walkFrames = dinoAtlas.ReturnRegions();
         
-        Animation dinoWalkAnim = new Animation();
-        dinoWalkAnim.AddFrames(walkFrames);
+        
+            
+        Animation dinoWalkAnim = dinoAtlas.CreateAnimation({"dino_walk_0","dino_walk_1","dino_walk_2","dino_walk_3","dino_walk_4","dino_walk_5"},)
         dinoAtlas.AddAnimation("walk", dinoWalkAnim);
 
-        _dino = dinoAtlas.CreateAnimatedSprite("walk");
+        _dino = dinoAtlas.CreateAnimatedSprite("walk");1
         _dino.CenterOrigin();
 
         _tilemap = Tilemap.FromFile("resources/textures/tilemap-definition.xml");
