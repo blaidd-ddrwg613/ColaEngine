@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using System;
+using Raylib_cs;
 
 namespace ColaEngine.Graphics;
 
@@ -41,7 +42,7 @@ public class AnimatedSprite : Sprite
     /// <param name="gameTime">A snapshot of the game timing values provided by the framework.</param>
     public void Update(GameTime gameTime)
     {
-        _elapsed += gameTime.ToTimeSpan(gameTime.DeltaTime);
+        _elapsed += GameTime.ToTimeSpan(gameTime.DeltaTime);
 
         if (_elapsed >= _animation.Delay)
         {

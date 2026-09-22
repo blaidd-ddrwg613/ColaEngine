@@ -1,4 +1,6 @@
-﻿namespace ColaEngine;
+﻿using System;
+
+namespace ColaEngine;
 
 public class GameTime
 {
@@ -14,8 +16,5 @@ public class GameTime
         TotalTime = _total;
     }
 
-    public TimeSpan ToTimeSpan(float gameTimeInSeconds)
-    {
-        return TimeSpan.FromSeconds(gameTimeInSeconds);
-    }
+    public static TimeSpan ToTimeSpan(float gameTimeInSeconds) => TimeSpan.FromSeconds(gameTimeInSeconds);
 }

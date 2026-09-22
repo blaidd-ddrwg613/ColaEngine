@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Numerics;
 using ColaEngine;
 using ColaEngine.Graphics;
 using Raylib_cs;
@@ -8,6 +9,7 @@ namespace TestGame;
 public class Game : GameBase
 {
     private AnimatedSprite _dino;
+    private Tilemap _tilemap;
         
     public Game() {}
 
@@ -32,6 +34,8 @@ public class Game : GameBase
 
         _dino = dinoAtlas.CreateAnimatedSprite("walk");
         _dino.CenterOrigin();
+
+        _tilemap = Tilemap.FromFile("resources/textures/tilemap-definition.xml");
     }
 
     protected override void Update(GameTime gameTime)
@@ -63,6 +67,7 @@ public class Game : GameBase
     protected override void Draw(GameTime gameTime)
     {
         base.Draw(gameTime);
+        _tilemap.Draw();
         _dino.Draw(new Vector2(100, 100));
     }
     
