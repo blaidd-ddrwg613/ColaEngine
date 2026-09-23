@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ColaEngine.Graphics;
+﻿namespace ColaEngine.Graphics;
 
 public class Animation
 {
