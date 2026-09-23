@@ -14,7 +14,7 @@ public class Game : GameBase
     {
         base.LoadContent();
 
-        _tilemap = Tilemap.FromFile("resources/textures/tilemap-definition.xml");
+        _tilemap = Tilemap.FromFile("resources/textures/example-tilemap-definition.xml");
         _dino = new Dino();
     }
 

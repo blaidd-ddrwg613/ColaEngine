@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Tilemap>
-    <Tileset region="0 0 80 80" tileWidth="20" tileHeight="20">resources/textures/atlas.png</Tileset>
+    <!-- region: the area of the atlas that contains the used tiles (starting x and y, total size in pixels) 
+    tileWidth/height: the width/height of each tile in pixels then is the source image that contains the tiles. -->
+    <Tileset region="260 0 80 80" tileWidth="20" tileHeight="20">resources/textures/atlas.png</Tileset>
     <Tiles>
         00 01 02 01 02 01 02 01 02 01 02 01 02 01 02 03
         04 05 05 06 05 05 06 05 05 06 05 05 06 05 05 07
