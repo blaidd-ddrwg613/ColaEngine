@@ -1,4 +1,5 @@
 using ColaEngine;
+using ColaEngine.Input;
 using ColaEngine.Scenes;
 using Raylib_cs;
 
@@ -8,12 +9,12 @@ public sealed class PauseScene : Scene
 {
     public override void Update(GameTime gameTime)
     {
-        if (Raylib.IsKeyPressed(KeyboardKey.Enter))
+        if (Input.IsActionPressed(InputAction.Confirm))
         {
             SceneManager.PopScene();
         }
 
-        if (Raylib.IsKeyPressed(KeyboardKey.Backspace))
+        if (Input.IsActionPressed(InputAction.Back))
         {
             SceneManager.ChangeScene(new MainMenuScene());
         }

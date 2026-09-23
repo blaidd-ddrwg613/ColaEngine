@@ -1,4 +1,5 @@
 using ColaEngine;
+using ColaEngine.Input;
 using ColaEngine.Scenes;
 using Raylib_cs;
 
@@ -8,7 +9,7 @@ public sealed class MainMenuScene : Scene
 {
     public override void Update(GameTime gameTime)
     {
-        if (Raylib.IsKeyPressed(KeyboardKey.Enter))
+        if (Input.IsActionPressed(InputAction.Confirm))
         {
             SceneManager.ChangeScene(new GameScene());
         }

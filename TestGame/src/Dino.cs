@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using ColaEngine;
 using ColaEngine.Graphics;
+using ColaEngine.Input;
 using Raylib_cs;
 
 namespace TestGame;
@@ -13,7 +14,7 @@ public class Dino
     private const int WalkFrameCount = 6;
 
     private readonly Texture2D _texture;
-    private readonly AnimatedSprite _sprite;
+    public AnimatedSprite Sprite { get; set; }
 
     public AnimationSet Animations { get; }
 
@@ -58,53 +59,42 @@ public class Dino
         Animations.Add("idle", _idleAnimation);
         Animations.Add("walk", _walkAnimation);
 
-        _sprite = new AnimatedSprite(Animations.Get("idle"));
-        _sprite.CenterOrigin();
+        Sprite = new AnimatedSprite(Animations.Get("idle"));
+        Sprite.CenterOrigin();
     }
 
     public void Update(GameTime gameTime)
     {
-        Vector2 direction = Vector2.Zero;
-
-        if (Raylib.IsKeyDown(KeyboardKey.A))
-        {
-            direction.X -= 1;
-        }
-
-        if (Raylib.IsKeyDown(KeyboardKey.D))
-        {
-            direction.X += 1;
-        }
+        Vector2 direction = Input.GetMovementVector();
 
         bool shouldWalk = direction != Vector2.Zero;
 
         if (shouldWalk)
         {
-            direction = Vector2.Normalize(direction);
             Position += direction * Speed * gameTime.DeltaTime;
 
             if (direction.X < 0)
             {
-                _sprite.FlipX = true;
+                Sprite.FlipX = true;
             }
             else if (direction.X > 0)
             {
-                _sprite.FlipX = false;
+                Sprite.FlipX = false;
             }
         }
 
         if (shouldWalk != _isWalking)
         {
             _isWalking = shouldWalk;
-            _sprite.Play(_isWalking ? Animations.Get("walk") : Animations.Get("idle"));
+            Sprite.Play(_isWalking ? Animations.Get("walk") : Animations.Get("idle"));
         }
 
-        _sprite.Update(gameTime);
+        Sprite.Update(gameTime);
     }
 
     public void Draw()
     {
-        _sprite.Draw(Position);
+        Sprite.Draw(Position);
     }
 
     public void Unload()

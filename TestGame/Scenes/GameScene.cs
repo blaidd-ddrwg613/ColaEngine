@@ -1,7 +1,8 @@
+using System.Numerics;
 using ColaEngine;
 using ColaEngine.Graphics;
+using ColaEngine.Input;
 using ColaEngine.Scenes;
-using Raylib_cs;
 
 namespace TestGame.Scenes;
 
@@ -14,11 +15,12 @@ public sealed class GameScene : Scene
     {
         _tilemap = Tilemap.FromFile("resources/textures/example-tilemap-definition.xml");
         _dino = new Dino();
+        _dino.Sprite.Scale = new Vector2(2, 2);
     }
 
     public override void Update(GameTime gameTime)
     {
-        if (Raylib.IsKeyPressed(KeyboardKey.Escape))
+        if (Input.IsActionPressed(InputAction.Pause))
         {
             SceneManager.PushScene(new PauseScene());
             return;
