@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using ColaEngine.Scenes;
+using Raylib_cs;
 
 namespace ColaEngine;
 
@@ -7,8 +8,10 @@ public abstract class GameBase
     public int Width { get; } = 800;
     public int Height { get; } = 600;
     public string Title { get; } = "Test Game";
-    
     public Color ClearColor { get; set; } = Color.Black;
+    public bool ExitOnEscape { get; set; } = true;
+    
+    public static SceneManager SceneManager { get; private set; }
     
     protected GameBase() {}
     
@@ -17,6 +20,8 @@ public abstract class GameBase
         Width = width;
         Height = height;
         Title = title;
+
+        SceneManager = new SceneManager();
     }
 
     public void Run()
@@ -65,7 +70,9 @@ public abstract class GameBase
     
     protected virtual void Initialize() { }
     protected virtual void LoadContent() { }
-    protected virtual void Update(GameTime gameTime) { }
+
+    protected virtual void Update(GameTime gameTime)
+    { }
     protected virtual void Draw(GameTime gameTime) { }
     protected virtual void UnloadContent() { }
 }

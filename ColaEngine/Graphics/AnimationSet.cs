@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ColaEngine.Graphics;
 
 public class AnimationSet

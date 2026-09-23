@@ -1,35 +1,50 @@
 ﻿using ColaEngine;
-using ColaEngine.Graphics;
+using Raylib_cs;
+using TestGame.Scenes;
 
 namespace TestGame;
 
 public class Game : GameBase
 {
-    private Tilemap _tilemap;
-    private Dino _dino;
+    public Game() : base(800, 600, "Test Game")
+    {
         
-    public Game() {}
+    }
 
     protected override void LoadContent()
     {
         base.LoadContent();
 
-        _tilemap = Tilemap.FromFile("resources/textures/example-tilemap-definition.xml");
-        _dino = new Dino();
+        SceneManager.ChangeScene(new MainMenuScene());
     }
 
     protected override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
-        _dino.Update(gameTime);
-    }
+        
+        if (SceneManager.CurrentScene is not MainMenuScene)
+        {
+            Raylib.SetExitKey(0);
+        }
+        else
+        {
+            Raylib.SetExitKey(KeyboardKey.Escape);
+        }
 
+        SceneManager.Update(gameTime);
+    }
 
     protected override void Draw(GameTime gameTime)
     {
         base.Draw(gameTime);
-        _tilemap.Draw();
-        _dino.Draw();
+
+        SceneManager.Draw(gameTime);
     }
-    
+
+    protected override void UnloadContent()
+    {
+        SceneManager.UnloadContent();
+
+        base.UnloadContent();
+    }
 }
