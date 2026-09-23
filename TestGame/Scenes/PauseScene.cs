@@ -22,7 +22,7 @@ public sealed class PauseScene : Scene
 
     public override void Draw(GameTime gameTime)
     {
-        Raylib.DrawRectangle(0, 0, 800, 600, new Color(0, 0, 0, 160));
+        Raylib.DrawRectangle(0, 0, Raylib.GetScreenWidth(), Raylib.GetScreenHeight(), new Color(0, 0, 0, 160));
 
         Raylib.DrawText("PAUSED", 330, 200, 40, Color.White);
         Raylib.DrawText("ENTER: resume", 305, 270, 22, Color.LightGray);

@@ -9,7 +9,8 @@ public abstract class GameBase
     public int Height { get; } = 600;
     public string Title { get; } = "Test Game";
     public Color ClearColor { get; set; } = Color.Black;
-    public bool ExitOnEscape { get; set; } = true;
+
+    public bool WindowResizable { get; set; } = true;
     
     public static SceneManager SceneManager { get; private set; }
     
@@ -33,6 +34,11 @@ public abstract class GameBase
         while (!Raylib.WindowShouldClose())
         {
             var gameTime = new GameTime(Raylib.GetFrameTime());
+            
+            if (Raylib.IsWindowResized())
+            {
+                OnResize(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+            }
 
             Update(gameTime);
             
@@ -45,6 +51,11 @@ public abstract class GameBase
 
     private void InitializeWindow()
     {
+        if (WindowResizable)
+        {
+            Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
+        }
+        
         Raylib.InitWindow(Width, Height, Title);
     }
 
@@ -71,8 +82,8 @@ public abstract class GameBase
     protected virtual void Initialize() { }
     protected virtual void LoadContent() { }
 
-    protected virtual void Update(GameTime gameTime)
-    { }
+    protected virtual void Update(GameTime gameTime) { }
     protected virtual void Draw(GameTime gameTime) { }
     protected virtual void UnloadContent() { }
+    protected virtual void OnResize(int width, int height) { }
 }
