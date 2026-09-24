@@ -1,37 +1,29 @@
-using System.Numerics;
 using ColaEngine;
 using ColaEngine.Input;
 using ColaEngine.Scenes;
-using ColaEngine.UI;
-using Iguina;
-using Iguina.Defs;
-using Iguina.Entities;
-using Raylib_cs;
-using Color = Raylib_cs.Color;
+using Gum;
+using Gum.Forms.Controls;
+using Gum.Managers;
+using Gum.Wireframe;
 
 namespace TestGame.Scenes;
 
 public sealed class MainMenuScene : Scene
 {
-    private UISystem _system = UiManager.System;
-        
+
+    private Button _button;
     public override void LoadContent()
     {
         base.LoadContent();
         
-        var panel = new Panel(_system);
-        panel.Anchor = Anchor.Center;
-        panel.Size.SetPixels(400, 400);
-        UiManager.System.Root.AddChild(panel);
-
-        var paragraph = new Paragraph(_system);
-        paragraph.Text = "Hello World!";
-        panel.AddChild(paragraph);
+        var screen = ObjectFinder.Self.GumProjectSave.Screens[0]
+            .ToGraphicalUiElement();
+        screen.AddToRoot();
+        
     }
 
     public override void Update(GameTime gameTime)
     {
-        _system.Update(gameTime.DeltaTime);
         if (Input.IsActionPressed(InputAction.Confirm))
         {
             SceneManager.ChangeScene(new GameScene());
@@ -40,6 +32,6 @@ public sealed class MainMenuScene : Scene
 
     public override void Draw(GameTime gameTime)
     {
-        _system.Draw();
+
     }
 }

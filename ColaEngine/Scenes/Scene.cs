@@ -1,4 +1,4 @@
-using ColaEngine.UI;
+using Gum;
 
 namespace ColaEngine.Scenes;
 
@@ -6,7 +6,7 @@ public abstract class Scene
 {
     protected SceneManager SceneManager { get; private set; } = null!;
 
-    protected static UIManager UiManager => GameBase.UiManager;
+    protected GumService GumUI => GameBase.GumUI;
     
     internal void SetSceneManager(SceneManager sceneManager)
     {

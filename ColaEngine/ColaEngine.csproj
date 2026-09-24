@@ -7,8 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Iguina" Version="1.1.6" />
+      <PackageReference Include="Gum.Expressions" Version="2026.9.2.1" />
+      <PackageReference Include="Gum.raylib" Version="2026.9.2.1" />
       <PackageReference Include="Raylib-cs" Version="8.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="UI\" />
     </ItemGroup>
 
 </Project>

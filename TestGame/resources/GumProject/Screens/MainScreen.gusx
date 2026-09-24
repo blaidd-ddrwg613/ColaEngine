@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScreenSave xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>MainScreen</Name>
+  <State>
+    <Name>Default</Name>
+    <Variable Type="string" Name="ButtonCloseGame.Text" SetsValue="true">
+      <Value xsi:type="xsd:string">Close Game</Value>
+    </Variable>
+    <Variable Type="float" Name="ButtonCloseGame.X" SetsValue="true">
+      <Value xsi:type="xsd:float">191</Value>
+    </Variable>
+    <Variable Type="float" Name="ButtonCloseGame.Y" SetsValue="true">
+      <Value xsi:type="xsd:float">30</Value>
+    </Variable>
+    <Variable Type="string" Name="ButtonStartGame.Text" SetsValue="true">
+      <Value xsi:type="xsd:string">Start Game</Value>
+    </Variable>
+    <Variable Type="float" Name="ButtonStartGame.X" SetsValue="true">
+      <Value xsi:type="xsd:float">35</Value>
+    </Variable>
+    <Variable Type="float" Name="ButtonStartGame.Y" SetsValue="true">
+      <Value xsi:type="xsd:float">30</Value>
+    </Variable>
+  </State>
+  <Instance Name="ButtonStartGame" BaseType="Controls/ButtonConfirm" />
+  <Instance Name="ButtonCloseGame" BaseType="Controls/ButtonConfirm" />
+  <Behaviors />
+</ScreenSave>

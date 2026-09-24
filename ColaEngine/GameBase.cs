@@ -1,5 +1,8 @@
-﻿using ColaEngine.Scenes;
-using ColaEngine.UI;
+﻿using System;
+using Gum;
+using Gum.Expressions;
+using Gum.Managers;
+using Gum.Wireframe;
 using Raylib_cs;
 
 namespace ColaEngine;
@@ -14,8 +17,8 @@ public abstract class GameBase
     public bool WindowResizable { get; set; } = true;
     
     public static SceneManager SceneManager { get; private set; }
-    
-    public static UIManager UiManager { get; private set; }
+
+    public static GumService GumUI => GumService.Default;
     
     protected GameBase() {}
     
@@ -24,14 +27,14 @@ public abstract class GameBase
         Width = width;
         Height = height;
         Title = title;
-
-        UiManager = new UIManager();
+        
         SceneManager = new SceneManager();
     }
 
     public void Run()
     {
         InitializeWindow();
+        InitializeGum();
         Initialize();
         LoadContent();
 
@@ -66,12 +69,11 @@ public abstract class GameBase
     private void DrawWindow(GameTime gameTime)
     {
         BeginDraw();
-        UiManager.UIRenderer.StartFrame();
-        
+
         Raylib.ClearBackground(ClearColor);
+        GumUI.Draw();
         Draw(gameTime);
         
-        UiManager.UIRenderer.EndFrame();
         EndDraw();
     }
 
@@ -84,11 +86,31 @@ public abstract class GameBase
     {
         Raylib.EndDrawing();
     }
-    
+
+    private void InitializeGum()
+    {
+        GraphicalUiElement.CanvasWidth = Width;
+        GraphicalUiElement.CanvasHeight = Height;
+        
+        GumUI.Initialize("resources/GumProject/TestGameGumProject.gumx");
+        // This assumes that your project has at least 1 screen
+        if(ObjectFinder.Self.GumProjectSave.Screens.Count == 0)
+        {
+            throw new Exception(
+                "No screen found in the Gum project, " + 
+                "did you add a Screen in the Gum tool?");
+        }
+        
+        GumExpressionService.Initialize();
+    }
+
     protected virtual void Initialize() { }
     protected virtual void LoadContent() { }
 
-    protected virtual void Update(GameTime gameTime) { }
+    protected virtual void Update(GameTime gameTime)
+    {
+        GumUI.Update(gameTime.DeltaTime);
+    }
     protected virtual void Draw(GameTime gameTime) { }
     protected virtual void UnloadContent() { }
     protected virtual void OnResize(int width, int height) { }

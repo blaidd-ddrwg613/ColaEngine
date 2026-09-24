@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Iguina" Version="1.1.6" />
+      <PackageReference Include="Gum.Expressions" Version="2026.9.2.1" />
       <PackageReference Include="Raylib-cs" Version="8.1.0" />
     </ItemGroup>
     <ItemGroup>
@@ -20,7 +20,12 @@
       <ProjectReference Include="..\ColaEngine\ColaEngine.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="resources\UI\" />
+      <Folder Include="resources\GumProject\" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="resources\GumProject\**\*.*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>
