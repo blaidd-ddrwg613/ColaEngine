@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Raylib_cs;
 
 namespace ColaEngine.Graphics;
 
 public class Tileset
 {
-    private readonly TextureRegion[] _tiles;
+    private readonly List<TextureRegion> _tiles;
 
     /// <summary>
     /// Gets the width, in pixels, of each tile in this tileset.
@@ -41,27 +42,27 @@ public class Tileset
         Rows = (int)textureRegion.Height / tileHeight;
         Count = Columns * Rows;
 
-        _tiles = new TextureRegion[Count];
+        _tiles = new List<TextureRegion>(Count);
 
         for (int i = 0; i < Count; i++)
         {
             int x = (int)textureRegion.Source.X + (i % Columns * tileWidth);
             int y = (int)textureRegion.Source.Y + (i / Columns * tileHeight);
 
-            _tiles[i] = new TextureRegion(
+            _tiles.Add(new TextureRegion(
                 textureRegion.Texture,
                 new Rectangle(x, y, TileWidth, TileHeight)
-            );
+            ));
         }
     }
     
     public TextureRegion GetTile(int index)
     {
-        if (index < 0 || index >= _tiles.Length)
+        if (index < 0)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(index),
-                $"Tile index {index} is out of range. Tileset has {_tiles.Length} tiles " +
+                $"Tile index {index} is out of range. " + 
                 $"({Columns} columns x {Rows} rows)."
             );
         }
@@ -78,14 +79,19 @@ public class Tileset
     public TextureRegion GetTile(int column, int row)
     {
         int index = row * Columns + column;
-        if (index < 0 || index >= _tiles.Length)
+        if (index < 0)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(index),
-                $"Tile index {index} is out of range. Tileset has {_tiles.Length} tiles " +
+                $"Tile index {index} is out of range. " +
                 $"({Columns} columns x {Rows} rows)."
             );
         }
         return GetTile(index);
+    }
+
+    public void Clear()
+    {
+        _tiles.Clear();
     }
 }

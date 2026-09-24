@@ -9,8 +9,8 @@ namespace ColaEngine.Graphics;
 
 public class Tilemap
 {
-    private readonly Tileset _tileset;
-    private readonly int[] _tiles;
+    private Tileset _tileset;
+    private int[] _tiles;
 
     /// <summary>
     /// Gets the total number of rows in this tilemap.
@@ -181,5 +181,11 @@ public class Tilemap
                 return tilemap;
             }
         }
+    }
+
+    public void Clear()
+    {
+        _tileset.Clear();
+        _tiles = [];
     }
 }

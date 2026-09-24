@@ -54,5 +54,6 @@ public sealed class GameScene : Scene
     public override void UnloadContent()
     {
         _dino.Unload();
+        _tilemap.Clear();
     }
 }

@@ -19,6 +19,8 @@ public abstract class GameBase
     public static SceneManager SceneManager { get; private set; }
 
     public static GumService GumUI => GumService.Default;
+
+    private static bool _exitRequested;
     
     protected GameBase() {}
     
@@ -33,12 +35,14 @@ public abstract class GameBase
 
     public void Run()
     {
+        _exitRequested = false;
+        
         InitializeWindow();
         InitializeGum();
         Initialize();
         LoadContent();
 
-        while (!Raylib.WindowShouldClose())
+        while (!Raylib.WindowShouldClose() && !_exitRequested)
         {
             var gameTime = new GameTime(Raylib.GetFrameTime());
             
@@ -56,6 +60,22 @@ public abstract class GameBase
         Raylib.CloseWindow();
     }
 
+    protected virtual void Initialize() { }
+    protected virtual void LoadContent() { }
+
+    protected virtual void Update(GameTime gameTime)
+    {
+        GumUI.Update(gameTime.DeltaTime);
+    }
+    protected virtual void Draw(GameTime gameTime) { }
+    protected virtual void UnloadContent() { }
+    protected virtual void OnResize(int width, int height) { }
+    
+    public static void RequestExit()
+    {
+        _exitRequested = true;
+    }
+    
     private void InitializeWindow()
     {
         if (WindowResizable)
@@ -103,15 +123,4 @@ public abstract class GameBase
         
         GumExpressionService.Initialize();
     }
-
-    protected virtual void Initialize() { }
-    protected virtual void LoadContent() { }
-
-    protected virtual void Update(GameTime gameTime)
-    {
-        GumUI.Update(gameTime.DeltaTime);
-    }
-    protected virtual void Draw(GameTime gameTime) { }
-    protected virtual void UnloadContent() { }
-    protected virtual void OnResize(int width, int height) { }
 }

@@ -1,42 +1,64 @@
 using ColaEngine;
 using ColaEngine.Input;
 using ColaEngine.Scenes;
-using Gum;
-using Gum.DataTypes;
-using Gum.Forms.Controls;
-using Gum.Managers;
-using Gum.Wireframe;
-using Raylib_cs;
 using TestGame.Screens;
 
 namespace TestGame.Scenes;
 
 public sealed class MainMenuScene : Scene
 {
-    private MainScreenRuntime _menueScreen;
-    
+    private MainScreenRuntime _menuScreen = null!;
+    private bool _isStartingGame;
+
     public override void LoadContent()
     {
         base.LoadContent();
 
-        _menueScreen = new MainScreenRuntime();
-        _menueScreen.AddToRoot();
+        _menuScreen = new MainScreenRuntime();
+        _menuScreen.AddToRoot();
+
+        _menuScreen.ButtonStartGame.Click += OnStartGameClicked;
+        _menuScreen.ButtonCloseGame.Click += OnCloseGameClicked;
     }
 
     public override void Update(GameTime gameTime)
     {
-        // TODO : Why Does this take 30 - 60 sec to change over and spam the console with loading the new scenes resource (atlas and dino)
-        _menueScreen.ButtonStartGame.Click += (sender, args) =>
-        {
-            _menueScreen.RemoveFromRoot();
-            SceneManager.ChangeScene(new GameScene());
-        };
-        // TODO This Will close the window but not close out the games resources it will just hang.
-        _menueScreen.ButtonCloseGame.Click += (sender, args) => Raylib.CloseWindow();
-        
         if (Input.IsActionPressed(InputAction.Confirm))
         {
-            SceneManager.ChangeScene(new GameScene());
+            StartGame();
         }
+    }
+
+    public override void UnloadContent()
+    {
+        if (_menuScreen != null)
+        {
+            _menuScreen.ButtonStartGame.Click -= OnStartGameClicked;
+            _menuScreen.ButtonCloseGame.Click -= OnCloseGameClicked;
+            _menuScreen.RemoveFromRoot();
+        }
+
+        base.UnloadContent();
+    }
+
+    private void OnStartGameClicked(object? sender, EventArgs args)
+    {
+        StartGame();
+    }
+
+    private void OnCloseGameClicked(object? sender, EventArgs args)
+    {
+        GameBase.RequestExit();
+    }
+
+    private void StartGame()
+    {
+        if (_isStartingGame)
+        {
+            return;
+        }
+
+        _isStartingGame = true;
+        SceneManager.ChangeScene(new GameScene());
     }
 }
