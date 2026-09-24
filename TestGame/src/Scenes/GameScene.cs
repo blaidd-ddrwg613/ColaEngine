@@ -18,9 +18,10 @@ public sealed class GameScene : Scene
     {
         _tilemap = Tilemap.FromFile("resources/textures/example-tilemap-definition.xml");
         _dino = new Dino();
-        _dino.Sprite.Scale = new Vector2(2, 2);
+        _dino.Sprite.Scale *= 0.5f;
         
         _camera = new GameCamera(800, 600);
+        _camera.Zoom = 3f;
     }
 
     public override void Update(GameTime gameTime)

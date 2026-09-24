@@ -1,4 +1,5 @@
 ﻿using ColaEngine.Scenes;
+using ColaEngine.UI;
 using Raylib_cs;
 
 namespace ColaEngine;
@@ -14,6 +15,8 @@ public abstract class GameBase
     
     public static SceneManager SceneManager { get; private set; }
     
+    public static UIManager UiManager { get; private set; }
+    
     protected GameBase() {}
     
     protected GameBase(int width, int height, string title)
@@ -22,6 +25,7 @@ public abstract class GameBase
         Height = height;
         Title = title;
 
+        UiManager = new UIManager();
         SceneManager = new SceneManager();
     }
 
@@ -62,10 +66,12 @@ public abstract class GameBase
     private void DrawWindow(GameTime gameTime)
     {
         BeginDraw();
+        UiManager.UIRenderer.StartFrame();
         
         Raylib.ClearBackground(ClearColor);
         Draw(gameTime);
         
+        UiManager.UIRenderer.EndFrame();
         EndDraw();
     }
 

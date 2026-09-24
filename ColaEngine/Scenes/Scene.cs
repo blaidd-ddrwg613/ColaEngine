@@ -1,9 +1,13 @@
+using ColaEngine.UI;
+
 namespace ColaEngine.Scenes;
 
 public abstract class Scene
 {
     protected SceneManager SceneManager { get; private set; } = null!;
 
+    protected static UIManager UiManager => GameBase.UiManager;
+    
     internal void SetSceneManager(SceneManager sceneManager)
     {
         SceneManager = sceneManager;
