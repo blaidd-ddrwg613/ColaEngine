@@ -14,7 +14,8 @@ public class Game : GameBase
     protected override void LoadContent()
     {
         base.LoadContent();
-
+        
+        
         SceneManager.ChangeScene(new MainMenuScene());
     }
 

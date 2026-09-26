@@ -9,6 +9,7 @@ namespace ColaEngine;
 
 public abstract class GameBase
 {
+    public static GameBase Instance { get; private set; }
     public int Width { get; } = 800;
     public int Height { get; } = 600;
     public string Title { get; } = "Test Game";
@@ -31,6 +32,8 @@ public abstract class GameBase
         Title = title;
         
         SceneManager = new SceneManager();
+        
+        Instance = this;
     }
 
     public void Run()

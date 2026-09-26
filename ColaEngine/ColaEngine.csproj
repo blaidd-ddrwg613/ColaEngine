@@ -12,8 +12,4 @@
       <PackageReference Include="Raylib-cs" Version="8.1.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="UI\" />
-    </ItemGroup>
-
 </Project>

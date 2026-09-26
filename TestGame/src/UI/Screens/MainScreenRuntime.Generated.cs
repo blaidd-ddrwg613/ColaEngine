@@ -27,9 +27,6 @@ partial class MainScreenRuntime : Gum.Wireframe.GraphicalUiElement
             var element = ObjectFinder.Self.GetElementSave("MainScreen");
             element?.SetGraphicalUiElement(this, global::RenderingLibrary.SystemManagers.Default);
         }
-
-
-
     }
     public override void AfterFullCreation()
     {

@@ -21,6 +21,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="resources\GumProject\" />
+      <Folder Include="resources\textures\player\" />
     </ItemGroup>
     <ItemGroup>
         <None Update="resources\GumProject\**\*.*">

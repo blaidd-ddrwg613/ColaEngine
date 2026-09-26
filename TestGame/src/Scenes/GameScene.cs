@@ -11,14 +11,13 @@ namespace TestGame.Scenes;
 public sealed class GameScene : Scene
 {
     private Tilemap _tilemap = null!;
-    private Dino _dino = null!;
+    private Player _player = null!;
     private GameCamera _camera = null!;
 
     public override void LoadContent()
     {
         _tilemap = Tilemap.FromFile("resources/textures/example-tilemap-definition.xml");
-        _dino = new Dino();
-        _dino.Sprite.Scale *= 0.5f;
+        _player = new Player();
         
         _camera = new GameCamera(800, 600);
         _camera.Zoom = 3f;
@@ -37,8 +36,8 @@ public sealed class GameScene : Scene
             return;
         }
 
-        _dino.Update(gameTime);
-        _camera.Follow(_dino.Position);
+        _player.Update(gameTime);
+        _camera.Follow(_player.Position);
     }
 
     public override void Draw(GameTime gameTime)
@@ -46,14 +45,13 @@ public sealed class GameScene : Scene
         _camera.BeginMode();
         
         _tilemap.Draw();
-        _dino.Draw();
+        _player.Draw();
         
         _camera.EndMode();
     }
 
     public override void UnloadContent()
     {
-        _dino.Unload();
         _tilemap.Clear();
     }
 }
