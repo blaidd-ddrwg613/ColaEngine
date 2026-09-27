@@ -1,4 +1,5 @@
 ﻿using System;
+using ColaEngine.utils;
 using Gum;
 using Gum.Expressions;
 using Gum.Managers;
@@ -18,6 +19,8 @@ public abstract class GameBase
     public bool WindowResizable { get; set; } = true;
     
     public static SceneManager SceneManager { get; private set; }
+    
+    public static ResourceManager ResourceManager { get; private set; }
 
     public static GumService GumUI => GumService.Default;
 
@@ -30,10 +33,13 @@ public abstract class GameBase
         Width = width;
         Height = height;
         Title = title;
-        
+
+        ResourceManager = new ResourceManager();
         SceneManager = new SceneManager();
         
         Instance = this;
+        
+        Logger.LogLevel = TraceLogLevel.All;
     }
 
     public void Run()
