@@ -16,7 +16,7 @@ public sealed class GameScene : Scene
 
     public override void LoadContent()
     {
-        _tilemap = Tilemap.FromFile("resources/textures/example-tilemap-definition.xml");
+        _tilemap = Tilemap.FromFile("resources/textures/world/test-tilemap.xml");
         _player = new Player();
         
         _camera = new GameCamera(800, 600);

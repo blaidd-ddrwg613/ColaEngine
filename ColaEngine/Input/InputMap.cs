@@ -14,6 +14,7 @@ public sealed class InputMap
         Bind(InputAction.MoveRight, KeyboardKey.D);
         Bind(InputAction.MoveUp, KeyboardKey.W);
         Bind(InputAction.MoveDown, KeyboardKey.S);
+        Bind(InputAction.Sprint, KeyboardKey.LeftShift);
 
         Bind(InputAction.Confirm, KeyboardKey.Enter);
         Bind(InputAction.Cancel, KeyboardKey.Escape);

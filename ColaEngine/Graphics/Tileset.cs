@@ -90,6 +90,11 @@ public class Tileset
         return GetTile(index);
     }
 
+    public List<TextureRegion> GetTileList()
+    {
+        return _tiles;
+    }
+
     public void Clear()
     {
         _tiles.Clear();
