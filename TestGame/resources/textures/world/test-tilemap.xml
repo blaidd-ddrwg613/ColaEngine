@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tilemap>
+    <!-- region: the area of the atlas that contains the used tiles (starting x and y, total size in pixels) 
+    tileWidth/height: the width/height of each tile in pixels then is the source image that contains the tiles. -->
+    <Tileset region="0 0 160 160" tileWidth="16" tileHeight="16">resources/textures/world/ground.png</Tileset>
+    <Tiles>
+        00 00 00 00 00 00 00 00 00 00
+        00 01 01 01 00 00 00 00 00 00
+        00 01 01 01 00 00 00 00 00 00
+        00 01 01 01 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00
+        00 00 00 02 02 03 03 00 00 00
+        00 00 00 02 02 03 03 00 00 00
+        00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00
+    </Tiles>
+</Tilemap>

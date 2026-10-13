@@ -8,7 +8,7 @@
 		"appVersion": "1.5.3",
 		"url": "https://ldtk.io"
 	},
-	"iid": "a6e4bce0-bde0-11f1-9af8-c90ed28c51d7",
+	"iid": "c3f6b650-bde0-11f1-816d-c1b10978c3ad",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
 	"nextUid": 1,
@@ -44,7 +44,7 @@
 	"levels": [
 		{
 			"identifier": "Level_0",
-			"iid": "a6e4e3f0-bde0-11f1-9af8-936dc1bbf6c9",
+			"iid": "c3f70470-bde0-11f1-816d-2393ecfeea7c",
 			"uid": 0,
 			"worldX": 0,
 			"worldY": 0,
@@ -67,5 +67,5 @@
 		}
 	],
 	"worlds": [],
-	"dummyWorldIid": "a6e4bce1-bde0-11f1-9af8-a95576572e4f"
+	"dummyWorldIid": "c3f6dd60-bde0-11f1-816d-e33a121d4466"
 }
