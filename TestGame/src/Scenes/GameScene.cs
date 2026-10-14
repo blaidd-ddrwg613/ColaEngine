@@ -14,9 +14,12 @@ public sealed class GameScene : Scene
     private Player _player = null!;
     private GameCamera _camera = null!;
 
+    private LdtkProject _level;
+
     public override void LoadContent()
     {
-        _tilemap = Tilemap.FromFile("resources/textures/world/test-tilemap.xml");
+        _level = LdtkProject.Load("resources/ldtk/Maps.ldtk");
+        
         _player = new Player();
         
         _camera = new GameCamera(800, 600);
@@ -44,7 +47,7 @@ public sealed class GameScene : Scene
     {
         _camera.BeginMode();
         
-        _tilemap.Draw();
+        _level.Draw();
         _player.Draw();
         
         _camera.EndMode();
@@ -52,6 +55,6 @@ public sealed class GameScene : Scene
 
     public override void UnloadContent()
     {
-        _tilemap.Clear();
+        _level.Dispose();
     }
 }
